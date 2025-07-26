@@ -1,4 +1,4 @@
-# Trilha Dev. Full Stack Jr.
+# Trilha +prati
 
 <p align="center">
   <img src="imagens/+prati.png" alt="Capa projeto">
