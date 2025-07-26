@@ -1,7 +1,7 @@
 # Trilha Dev. Full Stack Jr.
 
 <p align="center">
-  <img src="imagens/+prati.jpg" alt="Capa projeto">
+  <img src="imagens/+prati.png" alt="Capa projeto">
 </p>
 
 ## Descrição
