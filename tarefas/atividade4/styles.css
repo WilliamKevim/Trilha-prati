@@ -1,0 +1,862 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis */
+:root {
+    --cor-primaria: #114657; /* azul escuro principal */
+    --cor-secundaria: #068995; /* azul turquesa */
+    --fundo-escuro: #0f1419; /* fundo geral escuro */
+    --fundo-nav: #114657; /* navegação na cor primária */
+    --fundo-secao: #1a2332; /* fundo das seções */
+    --toggle-menu: #1a2332; /* menu mobile */
+    --destaque: #068995; /* turquesa para destaques */
+    --hover: #0aa3b3; /* turquesa mais claro para hover */
+    --texto-claro: #e6f1ff; /* texto claro */
+    --texto-muted: #b8d4e8; /* texto secundário */
+    --fonte-principal: "Inter", sans-serif;
+}
+
+/* Global */
+body {
+    font-family: var(--fonte-principal);
+    background: var(--fundo-escuro);
+    color: var(--texto-claro);
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Container global para centralizar conteúdo */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 6rem 0 4rem 0;
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 0;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(6, 137, 149, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(17, 70, 87, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+header .container {
+    position: relative;
+    z-index: 2;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem 0;
+    color: var(--texto-claro);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header .subtitle {
+    font-size: 1.5rem;
+    color: var(--texto-muted);
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.foto-perfil {
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border: 6px solid var(--destaque);
+    box-shadow: 0 0 30px rgba(6, 137, 149, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 0;
+}
+
+.foto-perfil:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(6, 137, 149, 0.6);
+}
+
+/* Slogan */
+.slogan {
+    color: var(--texto-claro);
+    font-style: italic;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    position: relative; /* Necessário para posicionar os pseudo-elementos */
+    display: inline-block; /* Garante que os traços sigam a largura do texto */
+    padding: 0.5rem 0; /* Espaçamento interno para os traços */
+}
+
+/* Traço superior */
+.slogan::before {
+    content: "";
+    position: absolute;
+    top: -3px; /* Ajuste a distância do traço acima */
+    left: 0%;
+    transform: translateX(-0%); /* Centraliza o traço */
+    width: 100px; /* Tamanho do traço superior */
+    height: 5px; /* Espessura do traço */
+    background: var(--destaque); /* Cor laranja */
+}
+
+/* Traço inferior */
+.slogan::after {
+    content: "";
+    position: absolute;
+    bottom: -3px; /* Ajuste a distância do traço abaixo */
+    left: 64%;
+    transform: translateX(-0%); /* Centraliza o traço */
+    width: 100px; /* Tamanho do traço inferior (menor que o superior) */
+    height: 5px; /* Espessura do traço */
+    background: var(--destaque); /* Cor laranja */
+}
+
+/* Navegação */
+nav {
+    background: rgba(17, 70, 87, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-nav {
+    width: 60px; /* Tamanho padrão da logo */
+    height: 60px;
+    object-fit: contain; /* Mantém a proporção da logo */
+    position: relative;
+    left: -40px; /* Ajuste para trazer a logo mais para o lado esquerdo */
+}
+
+.menu-toggle {
+    font-size: 2.2rem;
+    color: var(--texto-claro);
+    cursor: pointer;
+    display: none;
+    user-select: none;
+    z-index: 1000;
+    transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: var(--hover);
+}
+
+nav ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+nav a {
+    color: var(--texto-claro);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: color 0.3s ease;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+nav a:hover,
+nav a:focus {
+    color: var(--hover);
+    border-bottom: 2px solid var(--hover);
+    outline: none;
+}
+
+/* Menu Mobile */
+@media (max-width: 768px) {
+    .logo-nav {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 20px;
+    }
+
+    nav {
+        background: rgba(17, 70, 87, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 70px;
+        z-index: 1000;
+    }
+
+    .nav-container {
+        position: relative;
+        padding: 1rem 2rem;
+        justify-content: space-between;
+        background: transparent;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 2.2rem;
+        color: var(--texto-claro);
+        cursor: pointer;
+        user-select: none;
+        background: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .menu-toggle:hover {
+        color: var(--hover);
+    }
+
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: var(--toggle-menu);
+        width: 100%;
+        max-width: 320px;
+        display: none;
+        padding: 1.5rem 2rem;
+        box-shadow: -4px 4px 12px rgba(0, 0, 0, 0.3);
+        border-radius: 0 0 0 12px;
+        z-index: 999;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 0.7rem 0;
+    }
+
+    nav a {
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+    }
+}
+
+/* Main */
+main {
+    background: var(--fundo-escuro);
+}
+
+/* Seções com altura maior */
+section {
+    background: var(--fundo-secao);
+    padding: 6rem 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 10% 10%, rgba(6, 137, 149, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 90% 90%, rgba(17, 70, 87, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+section h2 {
+    color: var(--destaque);
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--destaque), var(--hover));
+    border-radius: 2px;
+}
+
+/* Seções alternadas */
+section:nth-child(even) {
+    background: var(--fundo-escuro);
+}
+
+section:nth-child(odd) {
+    background: var(--fundo-secao);
+}
+
+/* Estilização da seção Sobre */
+#sobre {
+    text-align: center;
+}
+
+#sobre p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--texto-muted);
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+}
+
+/* Estilização da lista de projetos */
+.projetos-lista {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.projetos-lista li {
+    background: rgba(17, 70, 87, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(6, 137, 149, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.projetos-lista li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--destaque), var(--hover));
+}
+
+.projetos-lista li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(6, 137, 149, 0.2);
+    border-color: var(--destaque);
+}
+
+.projetos-lista a {
+    color: var(--texto-claro);
+    text-decoration: none;
+    display: block;
+}
+
+.projetos-lista a:hover h3,
+.projetos-lista a:focus h3 {
+    color: var(--hover);
+}
+
+.projetos-lista h3 {
+    color: var(--destaque);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.3;
+}
+
+.projetos-lista p {
+    color: var(--texto-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Estilos para tecnologias dos projetos */
+.projeto-techs {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Tech Icons Styling - Projetos com tom azulado */
+.tech-icon {
+    width: 48px !important;
+    height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 15px 15px 0 !important;
+    padding: 15px !important;
+    border-radius: 12px !important;
+    background-color: rgba(6, 137, 149, 0.15) !important;
+    transition: all 0.3s ease !important;
+    color: var(--destaque) !important;
+    fill: var(--destaque) !important;
+}
+
+/* Remove as regras que forçavam branco nos projetos */
+
+.tech-icon:hover {
+    background: rgba(6, 137, 149, 0.3);
+    border-color: var(--destaque);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(6, 137, 149, 0.3);
+}
+
+.tech-icon svg {
+    width: 48px;
+    height: 48px;
+    fill: var(--destaque) !important;
+    stroke: var(--destaque) !important;
+    color: var(--destaque) !important;
+}
+
+.tech-icon svg path {
+    fill: var(--destaque) !important;
+    stroke: none !important;
+    color: var(--destaque) !important;
+}
+
+/* Ajuste específico para ícones com currentColor */
+.tech-icon svg [fill="currentColor"] {
+    fill: var(--destaque) !important;
+    color: var(--destaque) !important;
+}
+
+.tech-icon svg [stroke="currentColor"] {
+    stroke: var(--destaque) !important;
+    color: var(--destaque) !important;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem 0;
+    background: var(--cor-primaria);
+    color: var(--texto-claro);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(6, 137, 149, 0.2);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        box-shadow: none;
+    }
+
+    .nav-container {
+        position: relative;
+        padding: 0;
+        justify-content: flex-end;
+    }
+
+    .menu-wrapper {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 2.2rem;
+        color: var(--texto-claro);
+        cursor: pointer;
+        user-select: none;
+        background: none;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        box-shadow: none;
+    }
+
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: var(--toggle-menu);
+        width: 100%;
+        max-width: 320px;
+        display: none;
+        padding: 1.5rem 2rem;
+        box-shadow: -4px 4px 12px rgba(0, 0, 0, 0.3);
+        border-radius: 0 0 0 12px;
+        z-index: 999;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 0.7rem 0;
+    }
+
+    nav a {
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+    }
+}
+
+.habilidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.card-habilidade {
+    background: rgba(6, 137, 149, 0.1);
+    color: var(--texto-claro);
+    font-weight: 600;
+    border-radius: 15px;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(6, 137, 149, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.card-habilidade:hover {
+    transform: translateY(-8px);
+    background: rgba(6, 137, 149, 0.2);
+    border-color: var(--destaque);
+    box-shadow: 0 20px 40px rgba(6, 137, 149, 0.2);
+}
+
+.card-habilidade .icon svg {
+    width: 40px;
+    height: 40px;
+    fill: white;
+    color: white;
+}
+
+/* Força todas as partes dos SVGs das habilidades a serem brancas */
+.card-habilidade .icon svg *,
+.card-habilidade .icon svg path,
+.card-habilidade .icon svg g,
+.card-habilidade .icon svg [fill="currentColor"],
+.card-habilidade .icon svg [stroke="currentColor"] {
+    fill: white !important;
+    color: white !important;
+    stroke: white !important;
+}
+
+/* Força cor específica para elementos com fill="#000000" */
+.card-habilidade .icon svg [fill="#000000"],
+.card-habilidade .icon svg [fill="#000"],
+.card-habilidade .icon svg [fill="black"] {
+    fill: white !important;
+}
+
+/* Força cor específica para strokes pretos */
+.card-habilidade .icon svg [stroke="#000000"],
+.card-habilidade .icon svg [stroke="#000"],
+.card-habilidade .icon svg [stroke="black"] {
+    stroke: white !important;
+}
+
+.card-habilidade span {
+    color: var(--texto-claro);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.texto-justificado {
+    text-align: justify;
+    hyphens: auto;
+}
+
+@media (max-width: 768px) {
+    .texto-justificado {
+        text-align: justify;
+        hyphens: auto;
+    }
+}
+
+/* Contato */
+.contato-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.contato-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(17, 70, 87, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(6, 137, 149, 0.2);
+    transition: all 0.3s ease;
+}
+
+.contato-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--destaque);
+    box-shadow: 0 15px 30px rgba(6, 137, 149, 0.2);
+}
+
+.contato-item .icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: rgba(6, 137, 149, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contato-item .icon svg {
+    width: 30px;
+    height: 30px;
+    stroke: var(--destaque);
+}
+
+.contato-item p {
+    color: var(--texto-claro);
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.contato-item a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contato-item a:hover,
+.contato-item a:focus {
+    color: var(--hover);
+    outline: none;
+}
+
+.contato-item strong {
+    color: var(--destaque);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Divisor visual entre contato e redes sociais */
+.section-divider {
+    margin: 4rem 0 3rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.section-divider h3 {
+    color: var(--destaque);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0 2rem;
+    background: var(--fundo-secao);
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+}
+
+.section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--destaque), transparent);
+    z-index: 1;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    header .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .foto-perfil {
+        width: 150px;
+        height: 150px;
+    }
+    
+    section {
+        padding: 4rem 0;
+    }
+    
+    section h2 {
+        font-size: 2.5rem;
+    }
+    
+    .projetos-lista {
+        grid-template-columns: 1fr;
+    }
+    
+    .contato-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .redes-info {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .redes-item {
+        width: 70px;
+        height: 70px;
+        padding: 1rem;
+    }
+    
+    .redes-item .icon svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Redes Sociais */
+.redes-info {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.redes-item {
+    background: rgba(6, 137, 149, 0.1);
+    border: 1px solid rgba(6, 137, 149, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.redes-item:hover {
+    transform: translateY(-8px);
+    background: rgba(6, 137, 149, 0.2);
+    border-color: var(--destaque);
+    box-shadow: 0 20px 40px rgba(6, 137, 149, 0.2);
+}
+
+.redes-item .icon svg {
+    width: 35px;
+    height: 35px;
+    fill: var(--destaque);
+    color: var(--destaque);
+    transition: all 0.3s ease;
+}
+
+.redes-item:hover .icon svg {
+    fill: var(--hover);
+    color: var(--hover);
+}
+
+/* Força todas as partes dos SVGs das redes sociais a usarem as cores do tema */
+.redes-item .icon svg *,
+.redes-item .icon svg path,
+.redes-item .icon svg g {
+    fill: var(--destaque) !important;
+    color: var(--destaque) !important;
+}
+
+.redes-item:hover .icon svg *,
+.redes-item:hover .icon svg path,
+.redes-item:hover .icon svg g {
+    fill: var(--hover) !important;
+    color: var(--hover) !important;
+}
+
+.redes-item a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .redes-info {
+        gap: 0.8rem;
+    }
+
+    .redes-item {
+        width: 40px; /* Tamanho um pouco menor para dispositivos móveis */
+        height: 40px;
+        padding: 0.6rem;
+    }
+
+    .redes-item .icon svg {
+        width: 20px; /* Tamanho do ícone para telas menores */
+        height: 20px;
+    }
+}

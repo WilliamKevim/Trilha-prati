@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Galeria</title>
+        <link rel="stylesheet" href="styles3.css" />
+    </head>
+    <body>
+        <button class="hamburger" aria-label="Toggle menu"></button>
+        <nav class="nav-menu">
+            <a>Home</a>
+            <a>Locais</a>
+            <a>Contato</a>
+        </nav>
+        <div class="container">
+            <div class="galeria">
+                <figure>
+                    <img
+                        src="https://cdn.pixabay.com/photo/2019/06/24/10/32/sunrise-4295681_1280.jpg"
+                        alt=" viagem Londres"
+                    />
+                    <figcaption>Londres</figcaption>
+                </figure>
+                <figure>
+                    <img
+                        src="https://cdn.pixabay.com/photo/2023/07/04/10/20/river-8105970_1280.jpg"
+                        alt="viagem Amazônia"
+                    />
+                    <figcaption>Amazônia</figcaption>
+                </figure>
+                <figure>
+                    <img
+                        src="https://cdn.pixabay.com/photo/2023/07/04/10/15/boat-8105949_1280.jpg"
+                        alt=" viagem Sergipe"
+                    />
+                    <figcaption>Sergipe</figcaption>
+                </figure>
+                <figure>
+                    <img
+                        src="https://cdn.pixabay.com/photo/2019/08/14/10/37/beach-4405371_1280.jpg"
+                        alt="viagem Caribe"
+                    />
+                    <figcaption>Caribe</figcaption>
+                </figure>
+                <figure>
+                    <img
+                        src="https://cdn.pixabay.com/photo/2020/05/12/18/29/city-5164368_1280.jpg"
+                        alt="viagem Suiça"
+                    />
+                    <figcaption>Suiça</figcaption>
+                </figure>
+                <figure>
+                    <img
+                        src="https://cdn.pixabay.com/photo/2019/02/25/02/57/landscape-4018835_1280.jpg"
+                        alt="viagem EUA"
+                    />
+                    <figcaption>EUA</figcaption>
+                </figure>
+                <figure>
+                    <img
+                        src="https://cdn.pixabay.com/photo/2023/12/14/20/17/trail-8449604_1280.jpg"
+                        alt="viagem Canadá"
+                    />
+                    <figcaption>Canadá</figcaption>
+                </figure>
+                <figure>
+                    <img
+                        src="https://cdn.pixabay.com/photo/2025/06/05/06/50/waterfall-9642279_1280.jpg"
+                        alt="viagem Peru"
+                    />
+                    <figcaption>Peru</figcaption>
+                </figure>
+            </div>
+        </div>
+        <script>
+            document
+                .querySelector(".hamburger")
+                .addEventListener("click", () => {
+                    const hamburger = document.querySelector(".hamburger");
+                    const navMenu = document.querySelector(".nav-menu");
+                    hamburger.classList.toggle("active");
+                    navMenu.classList.toggle("active");
+                });
+        </script>
+    </body>
+</html>
+

@@ -1,0 +1,134 @@
+header {
+    background-color: #0A7C89;
+    color: white;
+    margin: 10px;
+    padding: 15px;
+    border: 3px solid #124153;
+}
+
+main {
+    background-color: #e0f7fa;
+    color: #124153;
+    margin: 10px;
+    padding: 15px;
+    border: 3px solid #0A7C89;
+}
+
+footer {
+    background-color: #124153;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    border: 3px solid #0A7C89;
+}
+
+h2 {
+    font-size: 1.5em;
+    text-decoration: underline;
+}
+
+.destaque {
+    font-style: italic;
+    background-color: #d0f0f3;
+}
+
+#importante {
+    border-top: 5px solid white;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+}
+.galeria figure {
+    margin: 0;
+    text-align: center;
+}
+.galeria img {
+    width: 100%;
+    height: auto;
+}
+.hamburger {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.hamburger::before {
+    content: "☰";
+}
+.hamburger.active::before {
+    content: "✕";
+}
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+    background-color: #09828F;
+}
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.nav-menu.active {
+    display: flex;
+}
+@media (max-width: 600px) {
+    .container {
+        margin-top: 40px;
+    }
+    .hamburger {
+        display: block;
+        background-color: #09828F;
+        border-radius: 2px;
+        width:40px;
+        height: 40px;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background-color: #09828F;
+        width: 200px;
+        padding: 20px;
+        box-shadow: -2px 0 5px white;
+    }
+    .nav-menu.active {
+        display: flex;
+    }
+    .galeria {
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(150px, 1fr)
+        );
+    }
+}
+@media (max-width: 400px) {
+    .galeria {
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(100px, 1fr)
+        );
+    }
+}
+
