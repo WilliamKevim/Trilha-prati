@@ -1,0 +1,51 @@
+// Dados dos produtos
+export const products = [
+  {
+    id: 1,
+    title: 'Pikachu Plush',
+    price: 99.9,
+    rating: 4.8,
+    tag: 'Novo',
+  image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png',
+  },
+  {
+    id: 2,
+    title: 'Charizard Figure',
+    price: 149.9,
+    rating: 4.9,
+    tag: 'Promo',
+  image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png',
+  },
+  {
+    id: 3,
+    title: 'Bulbasaur Keychain',
+    price: 29.9,
+    rating: 4.5,
+    tag: 'Novo',
+  image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
+  },
+  {
+    id: 4,
+    title: 'Squirtle Mug',
+    price: 39.9,
+    rating: 4.7,
+    tag: 'Promo',
+  image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png',
+  },
+  {
+    id: 5,
+    title: 'Eevee Backpack',
+    price: 199.9,
+    rating: 4.6,
+    tag: 'Novo',
+  image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png',
+  },
+  {
+    id: 6,
+    title: 'Jigglypuff Speaker',
+    price: 89.9,
+    rating: 4.4,
+    tag: 'Promo',
+  image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png',
+  },
+];
